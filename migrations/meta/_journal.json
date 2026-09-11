@@ -1,0 +1,34 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1788354329748,
+      "tag": "0000_wet_devos",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1788624860947,
+      "tag": "0001_peaceful_dagger",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1788686097746,
+      "tag": "0002_foamy_nico_minoru",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1788686621617,
+      "tag": "0003_ordinary_king_bedlam",
+      "breakpoints": true
+    }
+  ]
+}
