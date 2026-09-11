@@ -1,17 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kad Controls
 
-## Getting Started
+Next.js e-commerce site and admin portal for Kad Controls Ltd.
 
-First, run the development server:
+## Local development
+
+1. Install dependencies: `npm install`
+2. Copy `.env.example` to `.env.local` and fill in the values.
+3. Apply the database migrations: `npm run db:migrate`
+4. Start the app: `npm run dev`
+
+Open `http://localhost:3000`. The admin portal is at `/admin`.
+
+## Production deployment
+
+This project can be deployed as a Next.js app on Vercel or another Node.js host.
+
+1. Create a PostgreSQL database and provide its connection string as `DATABASE_URL`.
+2. Run `npm run db:migrate` against that database before the first deployment.
+3. Add every variable from `.env.example` to the host's production environment. Use a new random `JWT_SECRET` and a strong `ADMIN_PASSWORD` for production.
+4. Deploy with the standard commands:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

@@ -59,6 +59,7 @@ export default function HeroGallery() {
             src={slide.src}
             alt={slide.label}
             fill
+            loading={idx === 0 ? 'eager' : 'lazy'}
             sizes="(min-width: 1024px) 50vw, 100vw"
             className={`object-cover transition-opacity duration-1000 ease-in-out ${
               idx === active ? 'opacity-100' : 'opacity-0'

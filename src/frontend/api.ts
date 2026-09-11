@@ -14,7 +14,7 @@ export async function apiCall<T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<ApiResponse<T>> {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || '';
   const url = `${baseUrl}${endpoint}`;
 
   try {
@@ -42,7 +42,7 @@ export async function apiCall<T>(
 }
 
 export async function fetchProducts(page: number = 1, pageSize: number = 12) {
-  return apiCall('/api/products', {
+  return apiCall(`/api/products?page=${page}&pageSize=${pageSize}`, {
     method: 'GET',
   });
 }
@@ -106,7 +106,7 @@ export async function submitEnquiry(
   });
 }
 
-export async function createOrder(data: any) {
+export async function createOrder(data: unknown) {
   return apiCall('/api/orders', {
     method: 'POST',
     body: JSON.stringify(data),

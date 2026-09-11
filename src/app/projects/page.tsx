@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Navbar from '@/frontend/components/common/Navbar';
 import Footer from '@/frontend/components/common/Footer';
 
@@ -48,7 +49,7 @@ function MediaItem({ item }: { item: ProjectMedia }) {
       </video>
     );
   }
-  return <img src={item.url} alt={item.caption || ''} className="w-full h-56 object-cover rounded-lg" />;
+  return <Image src={item.url} alt={item.caption || ''} width={1200} height={224} sizes="(max-width: 640px) 100vw, 50vw" className="w-full h-56 object-cover rounded-lg" />;
 }
 
 export default function ProjectsPage() {
