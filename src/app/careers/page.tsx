@@ -56,21 +56,25 @@ export default function CareersPage() {
           ) : jobs.length > 0 ? (
             <div className="space-y-6">
               {jobs.map((job) => (
-                <div key={job.id} className="border border-border bg-card rounded-lg p-6">
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                    <h3 className="text-xl font-semibold">{job.title}</h3>
-                    <span className="text-xs font-medium bg-secondary text-secondary-foreground px-2 py-1 rounded">
-                      {employmentTypeLabels[job.employmentType] || job.employmentType}
-                    </span>
+                <details key={job.id} className="group border border-border bg-card rounded-lg p-6">
+                  <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <h3 className="text-xl font-semibold">{job.title}</h3>
+                      <span className="text-xs font-medium bg-secondary text-secondary-foreground px-2 py-1 rounded">
+                        {employmentTypeLabels[job.employmentType] || job.employmentType}
+                      </span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mt-2">
+                      {[job.department, job.location].filter(Boolean).join(' — ')}
+                    </p>
+                  </summary>
+                  <div className="pt-4">
+                    <p className="text-foreground/80 whitespace-pre-wrap mb-4">{job.description}</p>
+                    <a href={applyLink(job)} className="inline-flex rounded-full px-5 py-2 bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90">
+                      Apply via email
+                    </a>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    {[job.department, job.location].filter(Boolean).join(' — ')}
-                  </p>
-                  <p className="text-foreground/80 whitespace-pre-wrap mb-4">{job.description}</p>
-                  <a href={applyLink(job)} className="inline-flex rounded-full px-5 py-2 bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90">
-                    Apply via email
-                  </a>
-                </div>
+                </details>
               ))}
             </div>
           ) : (

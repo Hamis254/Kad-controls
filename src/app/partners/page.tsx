@@ -49,9 +49,9 @@ export default function PartnersPage() {
               {partners.map((partner) => (
                 <div key={partner.id} className="border border-border bg-card rounded-lg p-6 text-center">
                   {partner.logoUrl ? (
-                    <img src={partner.logoUrl} alt={partner.name} className="w-16 h-16 mx-auto mb-4 object-contain" />
+                    <img src={partner.logoUrl} alt={partner.name} className="w-32 h-24 mx-auto mb-4 object-contain" />
                   ) : (
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-secondary flex items-center justify-center text-primary font-bold text-xl">
+                    <div className="w-32 h-24 mx-auto mb-4 rounded-full bg-secondary flex items-center justify-center text-primary font-bold text-xl">
                       {partner.name.charAt(0)}
                     </div>
                   )}

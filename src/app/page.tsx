@@ -140,16 +140,24 @@ export default function Home() {
               {categories.map((cat) => {
                 const Icon = iconForCategory(cat.slug);
                 return (
-                  <Link
+                  <details
                     key={cat.id}
-                    href={`/catalogue?categoryId=${cat.id}`}
                     className="group border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-primary"
                   >
-                    <Icon className="h-8 w-8 text-primary transition group-hover:text-accent" />
-                    <h3 className="mt-12 text-xl font-semibold">{cat.name}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{cat.description}</p>
-                    <ArrowRight className="mt-6 h-4 w-4 opacity-0 transition group-hover:translate-x-1 group-hover:opacity-100" />
-                  </Link>
+                    <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                      <Icon className="h-8 w-8 text-primary transition group-hover:text-accent" />
+                      <h3 className="mt-12 text-xl font-semibold">{cat.name}</h3>
+                    </summary>
+                    <div className="pt-2">
+                      <p className="text-sm text-muted-foreground">{cat.description}</p>
+                      <Link
+                        href={`/catalogue?categoryId=${cat.id}`}
+                        className="mt-6 inline-flex items-center gap-2 font-semibold hover:text-primary"
+                      >
+                        Browse category <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </div>
+                  </details>
                 );
               })}
             </div>
