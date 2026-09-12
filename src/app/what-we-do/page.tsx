@@ -199,6 +199,9 @@ export default function WhatWeDoPage() {
                     <li><span className="font-medium">Duration:</span> {course.duration}</li>
                     <li><span className="font-medium">Audience:</span> {course.audience}</li>
                   </ul>
+                  <GetQuoteButton className="mt-6 inline-flex rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90">
+                    Send Enquiry
+                  </GetQuoteButton>
                 </div>
               ))}
             </div>
