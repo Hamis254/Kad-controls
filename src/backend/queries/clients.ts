@@ -11,6 +11,14 @@ export async function createClient(input: { name: string; logoUrl?: string; orde
   return created;
 }
 
+export async function updateClient(
+  id: string,
+  input: Partial<{ name: string; logoUrl: string; order: number }>
+) {
+  const [updated] = await db.update(clients).set(input).where(eq(clients.id, id)).returning();
+  return updated ?? null;
+}
+
 export async function deleteClient(id: string) {
   await db.delete(clients).where(eq(clients.id, id));
 }

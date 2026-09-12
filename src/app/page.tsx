@@ -105,24 +105,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Clients */}
-        {clients.length > 0 && (
-          <section className="border-b border-border px-6 py-12 sm:px-10 lg:px-12">
-            <p className="text-center text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-8">
-              Trusted by
-            </p>
-            <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-10 gap-y-6">
-              {clients.map((client) =>
-                client.logoUrl ? (
-                  <img key={client.id} src={client.logoUrl} alt={client.name} className="h-10 object-contain grayscale opacity-70 hover:opacity-100 transition" />
-                ) : (
-                  <span key={client.id} className="text-lg font-semibold text-muted-foreground">{client.name}</span>
-                )
-              )}
-            </div>
-          </section>
-        )}
-
         {/* Categories */}
         <section id="categories" className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:px-12">
           <div className="mb-10 flex items-end justify-between gap-6">
@@ -197,6 +179,24 @@ export default function Home() {
             Browse the catalogue <ArrowRight className="h-4 w-4" />
           </Link>
         </section>
+
+        {/* Clients */}
+        {clients.length > 0 && (
+          <section className="border-b border-border px-6 py-12 sm:px-10 lg:px-12">
+            <p className="text-center text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-8">
+              Trusted by
+            </p>
+            <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-10 gap-y-6">
+              {clients.map((client) =>
+                client.logoUrl ? (
+                  <img key={client.id} src={client.logoUrl} alt={client.name} className="h-20 w-auto max-w-45 object-contain opacity-100 transition sm:h-24" />
+                ) : (
+                  <span key={client.id} className="text-lg font-semibold text-muted-foreground">{client.name}</span>
+                )
+              )}
+            </div>
+          </section>
+        )}
       </main>
       <Footer />
     </div>
