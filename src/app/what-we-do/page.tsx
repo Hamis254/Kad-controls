@@ -142,6 +142,27 @@ export default function WhatWeDoPage() {
           </div>
         </section>
 
+        <section className="max-w-5xl mx-auto px-6 py-16 sm:px-10 lg:px-12">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="border border-border bg-card rounded-lg p-6">
+              <h3 className="font-semibold text-lg mb-2">Turnkey Projects</h3>
+              <p className="text-sm text-muted-foreground">Full-scope work — design, supply, installation and commissioning, handled start to finish by our own team.</p>
+            </div>
+            <div className="border border-border bg-card rounded-lg p-6">
+              <h3 className="font-semibold text-lg mb-2">Certified Panel Manufacturing</h3>
+              <p className="text-sm text-muted-foreground">We are certified panel manufacturers, working to the standards of our technology partners including Siemens and Schneider Electric.</p>
+            </div>
+            <div className="border border-border bg-card rounded-lg p-6">
+              <h3 className="font-semibold text-lg mb-2">Contract Labor Supply</h3>
+              <p className="text-sm text-muted-foreground">Qualified technicians supplied to work on contracts already in progress — bringing our certified expertise to your site.</p>
+            </div>
+            <div className="border border-border bg-card rounded-lg p-6">
+              <h3 className="font-semibold text-lg mb-2">Materials Supply</h3>
+              <p className="text-sm text-muted-foreground">Electrical materials and components, supplied and ready when your project needs them.</p>
+            </div>
+          </div>
+        </section>
+
         {/* Core services */}
         <section className="bg-secondary px-6 py-16 sm:px-10 lg:px-12">
           <div className="max-w-6xl mx-auto">

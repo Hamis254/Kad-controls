@@ -186,14 +186,16 @@ export default function Home() {
             <p className="text-center text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-8">
               Trusted by
             </p>
-            <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-10 gap-y-6">
-              {clients.map((client) =>
-                client.logoUrl ? (
-                  <img key={client.id} src={client.logoUrl} alt={client.name} className="h-20 w-auto max-w-45 object-contain opacity-100 transition sm:h-24" />
-                ) : (
-                  <span key={client.id} className="text-lg font-semibold text-muted-foreground">{client.name}</span>
-                )
-              )}
+            <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-6">
+              {clients.map((client) => (
+                <div key={client.id} className="flex h-20 shrink-0 items-center justify-center sm:h-24">
+                  {client.logoUrl ? (
+                    <img src={client.logoUrl} alt={client.name} className="max-h-20 w-auto max-w-full object-contain opacity-100 transition sm:max-h-24" />
+                  ) : (
+                    <span className="text-center text-lg font-semibold text-muted-foreground">{client.name}</span>
+                  )}
+                </div>
+              ))}
             </div>
           </section>
         )}

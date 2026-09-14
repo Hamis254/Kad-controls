@@ -71,6 +71,9 @@ export default function AboutPage() {
             way to keep a plant running reliably.
           </p>
           <p>
+            Kad Controls Ltd is a certified electrical contractor. We take on work at whatever scope a client needs — from full turnkey projects designed, supplied, installed and commissioned by our own team, to supplying qualified technicians for contracts already underway, to supplying the electrical materials and components a project calls for. Whatever the job requires, we have it covered.
+          </p>
+          <p>
             We&apos;re a family-owned and operated company with a track record of integrity and stability —
             the kind that keeps clients coming back for timely, dependable project delivery.
           </p>
