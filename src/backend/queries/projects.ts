@@ -20,6 +20,7 @@ export async function findProjectById(id: string) {
 export interface ProjectInput {
   title: string;
   clientName?: string;
+  category?: string;
   summary?: string;
   description?: string;
   isPublished?: boolean;
@@ -33,6 +34,7 @@ export async function createProject(input: ProjectInput) {
       .values({
         title: input.title,
         clientName: input.clientName,
+        category: input.category,
         summary: input.summary,
         description: input.description,
         isPublished: input.isPublished ?? true,

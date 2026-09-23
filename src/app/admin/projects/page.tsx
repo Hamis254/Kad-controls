@@ -15,6 +15,7 @@ interface ProjectListItem {
   id: string;
   title: string;
   clientName?: string | null;
+  category?: string | null;
   summary?: string | null;
   createdAt: string;
 }
@@ -29,7 +30,8 @@ export default function AdminProjectsPage() {
 
 function ProjectsAdmin() {
   const [projects, setProjects] = useState<ProjectListItem[]>([]);
-  const [form, setForm] = useState({ title: '', clientName: '', summary: '', description: '' });
+  const [form, setForm] = useState({ title: '', clientName: '', category: '', summary: '' });
+  const [scopeLines, setScopeLines] = useState<string[]>(['']);
   const [media, setMedia] = useState<MediaField[]>([{ type: 'image', url: '', caption: '' }]);
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
@@ -47,6 +49,10 @@ function ProjectsAdmin() {
     setMedia((prev) => prev.map((m, i) => (i === idx ? { ...m, [field]: value } : m)));
   };
 
+  const updateScopeLine = (idx: number, value: string) => {
+    setScopeLines((prev) => prev.map((line, i) => (i === idx ? value : line)));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
@@ -55,8 +61,9 @@ function ProjectsAdmin() {
       const payload = {
         title: form.title,
         clientName: form.clientName || undefined,
+        category: form.category || undefined,
         summary: form.summary || undefined,
-        description: form.description || undefined,
+        description: scopeLines.filter((line) => line.trim()).join('\n') || undefined,
         media: media
           .filter((m) => m.url.trim())
           .map((m, idx) => ({ type: m.type, url: m.url.trim(), caption: m.caption || undefined, order: idx })),
@@ -70,7 +77,8 @@ function ProjectsAdmin() {
       if (!json.success) throw new Error(json.error || 'Failed to create project');
 
       setResult({ type: 'success', message: 'Project published.' });
-      setForm({ title: '', clientName: '', summary: '', description: '' });
+      setForm({ title: '', clientName: '', category: '', summary: '' });
+      setScopeLines(['']);
       setMedia([{ type: 'image', url: '', caption: '' }]);
       loadProjects();
     } catch (err) {
@@ -115,15 +123,44 @@ function ProjectsAdmin() {
           </div>
 
           <div>
+            <label className="block text-sm font-medium mb-1">Category (optional)</label>
+            <input
+              value={form.category}
+              onChange={(e) => setForm({ ...form, category: e.target.value })}
+              placeholder="HV-MV Projects, LV Panels, Automation Projects, Solar Projects, etc."
+              className="w-full px-3 py-2 border border-border rounded-lg bg-background"
+            />
+            <p className="mt-1 text-xs text-muted-foreground">Free text, used to group projects on the public page.</p>
+          </div>
+
+          <div>
             <label className="block text-sm font-medium mb-1">Short summary</label>
             <input value={form.summary} onChange={(e) => setForm({ ...form, summary: e.target.value })}
               maxLength={500} className="w-full px-3 py-2 border border-border rounded-lg bg-background" />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Full description</label>
-            <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })}
-              rows={4} className="w-full px-3 py-2 border border-border rounded-lg bg-background" />
+            <label className="block text-sm font-medium mb-2">Scope of work</label>
+            <div className="space-y-3">
+              {scopeLines.map((line, idx) => (
+                <div key={idx} className="flex gap-2 items-start border border-border rounded-lg p-3">
+                  <input
+                    placeholder="e.g. Supply, installation and commissioning of RMU, 2MVA transformer"
+                    value={line}
+                    onChange={(e) => updateScopeLine(idx, e.target.value)}
+                    className="flex-1 px-3 py-2 border border-border rounded-lg bg-background"
+                  />
+                  {scopeLines.length > 1 && (
+                    <button type="button" onClick={() => setScopeLines((prev) => prev.filter((_, i) => i !== idx))}
+                      className="text-destructive text-sm px-2 py-2">✕</button>
+                  )}
+                </div>
+              ))}
+            </div>
+            <button type="button" onClick={() => setScopeLines((prev) => [...prev, ''])}
+              className="mt-3 text-sm font-medium text-primary hover:underline">
+              + Add scope line
+            </button>
           </div>
 
           <div>

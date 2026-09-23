@@ -458,11 +458,23 @@ export const clients = pgTable('clients', {
   createdAt: timestamp('createdAt').defaultNow().notNull(),
 });
 
+// Employee testimonials shown on the public Careers page
+export const employeeTestimonials = pgTable('employeeTestimonials', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  name: varchar('name', { length: 255 }).notNull(),
+  position: varchar('position', { length: 255 }).notNull(),
+  photoUrl: varchar('photoUrl', { length: 500 }),
+  testimonial: text('testimonial').notNull(),
+  order: integer('order').default(0).notNull(),
+  createdAt: timestamp('createdAt').defaultNow().notNull(),
+});
+
 // Projects / case studies
 export const projects = pgTable('projects', {
   id: uuid('id').primaryKey().defaultRandom(),
   title: varchar('title', { length: 255 }).notNull(),
   clientName: varchar('clientName', { length: 255 }),
+  category: varchar('category', { length: 255 }),
   summary: varchar('summary', { length: 500 }),
   description: text('description'),
   isPublished: boolean('isPublished').default(true).notNull(),

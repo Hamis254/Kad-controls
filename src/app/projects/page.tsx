@@ -16,6 +16,7 @@ interface Project {
   id: string;
   title: string;
   clientName?: string | null;
+  category?: string | null;
   summary?: string | null;
   description?: string | null;
   media: ProjectMedia[];
@@ -63,6 +64,17 @@ export default function ProjectsPage() {
       .finally(() => setIsLoading(false));
   }, []);
 
+  const groupedProjects = projects.reduce<Record<string, Project[]>>((groups, project) => {
+    const category = project.category?.trim() || 'Other Projects';
+    (groups[category] ||= []).push(project);
+    return groups;
+  }, {});
+  const categories = Object.keys(groupedProjects).sort((a, b) => {
+    if (a === 'Other Projects') return 1;
+    if (b === 'Other Projects') return -1;
+    return 0;
+  });
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <Navbar />
@@ -79,20 +91,37 @@ export default function ProjectsPage() {
               <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary" />
             </div>
           ) : projects.length > 0 ? (
-            <div className="space-y-12">
-              {projects.map((project) => (
-                <article key={project.id} className="border border-border bg-card rounded-lg p-6">
-                  <h2 className="text-2xl font-semibold">{project.title}</h2>
-                  {project.clientName && <p className="text-sm text-muted-foreground mt-1">Client: {project.clientName}</p>}
-                  {project.summary && <p className="mt-3 text-foreground/80">{project.summary}</p>}
-                  {project.description && <p className="mt-3 text-foreground/80 whitespace-pre-wrap">{project.description}</p>}
+            <div className="space-y-14">
+              {categories.map((category) => (
+                <section key={category}>
+                  <h2 className="text-2xl font-semibold mb-6">{category}</h2>
+                  <div className="space-y-10">
+                    {groupedProjects[category].map((project) => {
+                      const bullets = project.description
+                        ?.split('\n')
+                        .map((line) => line.trim())
+                        .filter(Boolean) ?? [];
 
-                  {project.media.length > 0 && (
-                    <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                      {project.media.map((m) => <MediaItem key={m.id} item={m} />)}
-                    </div>
-                  )}
-                </article>
+                      return (
+                        <article key={project.id}>
+                          <h3 className="text-xl font-bold">{project.clientName || project.title}</h3>
+                          {project.summary && <p className="mt-1 text-foreground/80">{project.summary}</p>}
+                          {bullets.length > 0 && (
+                            <ul className="mt-3 list-disc space-y-1 pl-5 text-foreground/80">
+                              {bullets.map((bullet, index) => <li key={`${project.id}-bullet-${index}`}>{bullet}</li>)}
+                            </ul>
+                          )}
+
+                          {project.media.length > 0 && (
+                            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                              {project.media.map((m) => <MediaItem key={m.id} item={m} />)}
+                            </div>
+                          )}
+                        </article>
+                      );
+                    })}
+                  </div>
+                </section>
               ))}
             </div>
           ) : (

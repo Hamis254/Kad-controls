@@ -6,6 +6,7 @@ import { isAdminRequest } from '@/backend/auth/session';
 const createSchema = z.object({
   title: z.string().min(1).max(255),
   clientName: z.string().max(255).optional(),
+  category: z.string().max(255).optional(),
   summary: z.string().max(500).optional(),
   description: z.string().max(10000).optional(),
   isPublished: z.boolean().optional(),

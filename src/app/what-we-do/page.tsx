@@ -1,7 +1,7 @@
 import Navbar from '@/frontend/components/common/Navbar';
 import Footer from '@/frontend/components/common/Footer';
 import GetQuoteButton from '@/frontend/components/common/GetQuoteButton';
-import { BatteryCharging, Cpu, Gauge, Fuel, Wind, Sun, Wrench, Lightbulb, Video } from 'lucide-react';
+import { BatteryCharging, Cpu, Gauge, Fuel, Wind, Sun, Wrench, Lightbulb, Video, CheckCircle2 } from 'lucide-react';
 
 const coreServices = [
   { icon: Wrench, title: 'Low voltage distribution panels', text: 'Design, build and installation of LV distribution panels.' },
@@ -108,6 +108,48 @@ const trainingCourses = [
     duration: '2 days',
     audience: 'Instrumentation technicians',
   },
+  {
+    code: '07',
+    title: 'Motor Control Centre (MCC) Maintenance & Troubleshooting',
+    basis: 'Hands-on with live MCC panels and overload protection setups',
+    duration: '4 days',
+    audience: 'Electricians and technicians responsible for motor control panels',
+  },
+  {
+    code: '08',
+    title: 'Power Quality Analysis & Correction',
+    basis: 'Using our own power quality analyzers on real load profiles',
+    duration: '3 days',
+    audience: 'Facility engineers and technicians managing power factor and harmonics',
+  },
+  {
+    code: '09',
+    title: 'Solar PV Installation & Maintenance',
+    basis: 'Covers array sizing, wiring, inverters and fault-finding',
+    duration: '5 days',
+    audience: 'Electricians moving into solar installation and maintenance work',
+  },
+  {
+    code: '10',
+    title: 'UPS & Inverter Systems Maintenance',
+    basis: null,
+    duration: '3 days',
+    audience: 'Technicians responsible for standby power systems',
+  },
+  {
+    code: '11',
+    title: 'Electrical Safety & Lockout-Tagout (LOTO)',
+    basis: 'Practical isolation drills on our training panels',
+    duration: '2 days',
+    audience: 'Anyone working on or near live electrical systems',
+  },
+  {
+    code: '12',
+    title: 'CCTV & Access Control Systems',
+    basis: 'Hands-on installation, configuration and fault-finding',
+    duration: '3 days',
+    audience: 'Security systems installers and facility technicians',
+  },
 ];
 
 export default function WhatWeDoPage() {
@@ -205,12 +247,27 @@ export default function WhatWeDoPage() {
         <section className="bg-secondary px-6 py-16 sm:px-10 lg:px-12">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-2xl font-semibold text-center mb-2">Our Training Section</h2>
-            <p className="text-center text-muted-foreground mb-10">
-              Short courses for anyone who needs to maintain, program or calibrate industrial control and instrumentation systems.
+            <p className="text-center text-muted-foreground max-w-2xl mx-auto">
+              Every course is fully practical — trainees work hands-on with our own training kits and
+              live equipment, not just slides. Each course ends with an assessment and a certificate of
+              completion.
             </p>
+
+            <div className="flex flex-wrap justify-center gap-3 mt-6 mb-10">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-card border border-border px-3 py-1.5 text-xs font-medium">
+                <CheckCircle2 className="h-3.5 w-3.5 text-primary" /> 100% hands-on, practical sessions
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-card border border-border px-3 py-1.5 text-xs font-medium">
+                <CheckCircle2 className="h-3.5 w-3.5 text-primary" /> Training kits and live equipment provided
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-card border border-border px-3 py-1.5 text-xs font-medium">
+                <CheckCircle2 className="h-3.5 w-3.5 text-primary" /> Certificate of completion
+              </span>
+            </div>
+
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {trainingCourses.map((course) => (
-                <div key={course.code} className="border border-border bg-card rounded-lg p-6">
+                <div key={course.code} className="border border-border bg-card rounded-lg p-6 flex flex-col">
                   <span className="text-sm font-semibold text-accent">{course.code}</span>
                   <h3 className="font-semibold text-lg mt-1 mb-3">{course.title}</h3>
                   {course.basis && (
@@ -220,8 +277,11 @@ export default function WhatWeDoPage() {
                     <li><span className="font-medium">Duration:</span> {course.duration}</li>
                     <li><span className="font-medium">Audience:</span> {course.audience}</li>
                   </ul>
-                  <GetQuoteButton className="mt-6 inline-flex rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90">
-                    Send Enquiry
+                  <p className="text-xs text-muted-foreground mt-3">
+                    Practical, kit-based training — certificate issued on completion.
+                  </p>
+                  <GetQuoteButton className="mt-auto inline-flex items-center justify-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90 self-start">
+                    Book This Training
                   </GetQuoteButton>
                 </div>
               ))}

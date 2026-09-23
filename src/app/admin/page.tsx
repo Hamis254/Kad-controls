@@ -9,6 +9,7 @@ const sections = [
   { href: '/admin/projects', title: 'Projects', text: 'Publish case studies with images and short videos.' },
   { href: '/admin/partners', title: 'Partners', text: 'Manage the partners shown on the Partners page.' },
   { href: '/admin/clients', title: 'Clients', text: 'Manage the "Our Clients" logo strip.' },
+  { href: '/admin/employee-testimonials', title: 'Employee testimonials', text: 'Manage testimonials shown on the Careers page.' },
   { href: '/admin/jobs', title: 'Careers', text: 'Post and close job openings.' },
 ];
 

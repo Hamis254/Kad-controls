@@ -29,6 +29,20 @@
       "when": 1788686621617,
       "tag": "0003_ordinary_king_bedlam",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1789970861457,
+      "tag": "0004_mature_lilandra",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1790141573043,
+      "tag": "0005_supreme_valkyrie",
+      "breakpoints": true
     }
   ]
 }

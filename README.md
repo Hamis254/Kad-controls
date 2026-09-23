@@ -1,4 +1,4 @@
-# Kad Controls
+# Kad Controls Ltd
 
 Next.js e-commerce site and admin portal for Kad Controls Ltd.
 
