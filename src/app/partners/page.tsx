@@ -12,81 +12,13 @@ interface Partner {
   logoUrl?: string | null;
 }
 
-function useDominantColor(url: string | null | undefined) {
-  const [colorState, setColorState] = useState<{ url: string | null; color: string | null }>({ url: null, color: null });
-
-  useEffect(() => {
-    if (!url) {
-      return;
-    }
-
-    let isCurrent = true;
-    const image = new Image();
-    image.crossOrigin = 'anonymous';
-    image.onload = () => {
-      if (!isCurrent) return;
-
-      try {
-        const canvas = document.createElement('canvas');
-        canvas.width = 40;
-        canvas.height = 40;
-        const context = canvas.getContext('2d');
-        if (!context) {
-          setColorState({ url, color: null });
-          return;
-        }
-
-        context.drawImage(image, 0, 0, 40, 40);
-        const pixels = context.getImageData(0, 0, 40, 40).data;
-        let red = 0;
-        let green = 0;
-        let blue = 0;
-        let count = 0;
-
-        for (let index = 0; index < pixels.length; index += 4) {
-          const pixelRed = pixels[index];
-          const pixelGreen = pixels[index + 1];
-          const pixelBlue = pixels[index + 2];
-          const alpha = pixels[index + 3];
-          if (alpha < 128 || (pixelRed > 235 && pixelGreen > 235 && pixelBlue > 235)) continue;
-
-          red += pixelRed;
-          green += pixelGreen;
-          blue += pixelBlue;
-          count += 1;
-        }
-
-        setColorState({
-          url,
-          color: count > 0 ? `rgb(${Math.round(red / count)}, ${Math.round(green / count)}, ${Math.round(blue / count)})` : null,
-        });
-      } catch {
-        setColorState({ url, color: null });
-      }
-    };
-    image.onerror = () => {
-      if (isCurrent) setColorState({ url, color: null });
-    };
-    image.src = url;
-
-    return () => {
-      isCurrent = false;
-    };
-  }, [url]);
-
-  return colorState.url === url ? colorState.color : null;
-}
-
 function PartnerCard({ partner, failedLogos, setFailedLogos }: {
   partner: Partner;
   failedLogos: Set<string>;
   setFailedLogos: React.Dispatch<React.SetStateAction<Set<string>>>;
 }) {
-  const dominantColor = useDominantColor(partner.logoUrl);
-
   return (
     <div className="flex flex-col border border-border bg-card rounded-lg p-3 text-center">
-      <div className="h-1 -mt-3 -mx-3 mb-2 rounded-t-lg" style={{ backgroundColor: dominantColor || 'transparent' }} />
       <div className="flex h-12 items-center justify-center mb-2">
         {partner.logoUrl && !failedLogos.has(partner.id) ? (
           <img
@@ -121,7 +53,7 @@ export default function PartnersPage() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-secondary text-foreground">
       <Navbar />
 
       <main className="flex-1">
@@ -136,7 +68,8 @@ export default function PartnersPage() {
           </div>
         </section>
 
-        <section className="max-w-7xl mx-auto px-6 py-16 sm:px-10 lg:px-12">
+        <section className="w-full px-6 py-16 sm:px-10 lg:px-12">
+          <div className="mx-auto w-full max-w-[1800px]">
           {isLoading ? (
             <div className="flex justify-center py-12">
               <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary" />
@@ -158,6 +91,7 @@ export default function PartnersPage() {
           <p className="mt-10 text-center text-sm text-muted-foreground">
             Interested in partnering with us? <a href="/contact" className="text-primary underline">Get in touch</a>.
           </p>
+          </div>
         </section>
       </main>
 

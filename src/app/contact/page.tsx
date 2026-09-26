@@ -4,7 +4,7 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-secondary text-foreground">
       <Navbar />
 
       <main className="flex-1">
@@ -17,7 +17,8 @@ export default function ContactPage() {
           </p>
         </section>
 
-        <section className="max-w-5xl mx-auto px-6 py-16 sm:px-10 lg:px-12 grid gap-10 lg:grid-cols-2">
+        <section className="w-full px-6 py-16 sm:px-10 lg:px-12">
+          <div className="mx-auto grid w-full max-w-[1600px] gap-10 lg:grid-cols-2">
           <div className="space-y-6">
             <div className="flex gap-4">
               <MapPin className="h-6 w-6 text-primary shrink-0 mt-1" />
@@ -81,6 +82,7 @@ export default function ContactPage() {
               loading="lazy"
               className="border-0"
             />
+          </div>
           </div>
         </section>
       </main>

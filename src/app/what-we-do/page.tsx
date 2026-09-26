@@ -154,7 +154,7 @@ const trainingCourses = [
 
 export default function WhatWeDoPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-secondary text-foreground">
       <Navbar />
 
       <main className="flex-1">
@@ -168,7 +168,8 @@ export default function WhatWeDoPage() {
         </section>
 
         {/* Turn-key process */}
-        <section className="max-w-5xl mx-auto px-6 py-16 sm:px-10 lg:px-12">
+        <section className="w-full px-6 py-16 sm:px-10 lg:px-12">
+          <div className="mx-auto w-full max-w-[1600px]">
           <h2 className="text-2xl font-semibold text-center mb-2">Turn-key, start to finish</h2>
           <p className="text-center text-muted-foreground mb-10 max-w-xl mx-auto">
             One team handles every stage — no gaps between a designer, a supplier and an installer.
@@ -182,9 +183,11 @@ export default function WhatWeDoPage() {
               </div>
             ))}
           </div>
+          </div>
         </section>
 
-        <section className="max-w-5xl mx-auto px-6 py-16 sm:px-10 lg:px-12">
+        <section className="w-full px-6 py-16 sm:px-10 lg:px-12">
+          <div className="mx-auto w-full max-w-[1600px]">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div className="border border-border bg-card rounded-lg p-6">
               <h3 className="font-semibold text-lg mb-2">Turnkey Projects</h3>
@@ -203,11 +206,12 @@ export default function WhatWeDoPage() {
               <p className="text-sm text-muted-foreground">Electrical materials and components, supplied and ready when your project needs them.</p>
             </div>
           </div>
+          </div>
         </section>
 
         {/* Core services */}
-        <section className="bg-secondary px-6 py-16 sm:px-10 lg:px-12">
-          <div className="max-w-6xl mx-auto">
+        <section className="w-full bg-secondary px-6 py-16 sm:px-10 lg:px-12">
+          <div className="mx-auto w-full max-w-[1600px]">
             <h2 className="text-2xl font-semibold text-center mb-10">Core Services</h2>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {coreServices.map(({ icon: Icon, title, text }) => (
@@ -222,7 +226,8 @@ export default function WhatWeDoPage() {
         </section>
 
         {/* Lighting */}
-        <section className="max-w-6xl mx-auto px-6 py-16 sm:px-10 lg:px-12">
+        <section className="w-full px-6 py-16 sm:px-10 lg:px-12">
+          <div className="mx-auto w-full max-w-[1600px]">
           <div className="flex items-center gap-2 justify-center mb-10">
             <Lightbulb className="h-6 w-6 text-primary" />
             <h2 className="text-2xl font-semibold">Lighting Services</h2>
@@ -241,11 +246,12 @@ export default function WhatWeDoPage() {
               </div>
             ))}
           </div>
+          </div>
         </section>
 
         {/* Training */}
-        <section className="bg-secondary px-6 py-16 sm:px-10 lg:px-12">
-          <div className="max-w-6xl mx-auto">
+        <section className="w-full bg-secondary px-6 py-16 sm:px-10 lg:px-12">
+          <div className="mx-auto w-full max-w-[1600px]">
             <h2 className="text-2xl font-semibold text-center mb-2">Our Training Section</h2>
             <p className="text-center text-muted-foreground max-w-2xl mx-auto">
               Every course is fully practical — trainees work hands-on with our own training kits and

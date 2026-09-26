@@ -49,13 +49,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-secondary text-foreground">
       <Navbar />
 
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden bg-primary text-primary-foreground">
-          <div className="mx-auto grid max-w-7xl gap-4 px-6 py-20 sm:px-10 lg:grid-cols-[1fr_1fr] lg:items-stretch lg:px-12 lg:py-28">
+          <div className="mx-auto grid w-full max-w-[1800px] gap-4 px-6 py-20 sm:px-10 lg:grid-cols-[1fr_1fr] lg:items-stretch lg:px-12 lg:py-28">
             <div className="relative z-10 max-w-2xl">
               <p className="mb-6 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-accent">
                 <Zap className="h-4 w-4" /> Turn-key solution provider
@@ -83,8 +83,8 @@ export default function Home() {
         </section>
 
         {/* Turn-key process */}
-        <section className="border-b border-border bg-secondary">
-          <div className="mx-auto grid max-w-7xl gap-6 px-6 py-8 sm:grid-cols-4 sm:px-10 lg:px-12">
+        <section className="border-b border-border bg-background">
+          <div className="mx-auto grid w-full max-w-[1800px] gap-6 px-6 py-8 sm:grid-cols-4 sm:px-10 lg:px-12">
             {[
               [PenTool, "1. Design", "Solution designed around your site"],
               [Package, "2. Supply", "Panels and systems supplied"],
@@ -106,7 +106,7 @@ export default function Home() {
         </section>
 
         {/* Categories */}
-        <section id="categories" className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:px-12">
+        <section id="categories" className="w-full px-6 py-20 sm:px-10 lg:px-12">
           <div className="mb-10 flex items-end justify-between gap-6">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Product range</p>
@@ -149,8 +149,8 @@ export default function Home() {
         </section>
 
         {/* Featured products */}
-        <section className="bg-secondary px-6 py-20 sm:px-10 lg:px-12">
-          <div className="mx-auto max-w-7xl">
+        <section className="w-full bg-secondary px-6 py-20 sm:px-10 lg:px-12">
+          <div className="mx-auto w-full max-w-[1800px]">
             <div className="mb-10 flex items-end justify-between gap-6">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">In stock now</p>

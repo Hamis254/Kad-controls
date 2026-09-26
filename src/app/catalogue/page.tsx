@@ -63,9 +63,9 @@ export default function CataloguePage() {
   }, [selectedCategory]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-muted/30 text-foreground">
+    <div className="min-h-screen flex flex-col bg-secondary text-foreground">
       <Navbar />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
+      <main className="mx-auto w-full max-w-[1800px] px-4 py-12 sm:px-6 lg:px-8 flex-1">
         <h1 className="text-4xl font-bold mb-8">Product Catalogue</h1>
         <div className="flex flex-col md:flex-row gap-8">
           <aside className="w-full md:w-64 shrink-0">

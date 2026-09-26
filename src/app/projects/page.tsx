@@ -76,7 +76,7 @@ export default function ProjectsPage() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-secondary text-foreground">
       <Navbar />
 
       <main className="flex-1">
@@ -85,7 +85,8 @@ export default function ProjectsPage() {
           <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight">Our Projects</h1>
         </section>
 
-        <section className="max-w-5xl mx-auto px-6 py-16 sm:px-10 lg:px-12">
+        <section className="w-full px-6 py-16 sm:px-10 lg:px-12">
+          <div className="mx-auto w-full max-w-[1600px]">
           {isLoading ? (
             <div className="flex justify-center py-12">
               <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary" />
@@ -127,6 +128,7 @@ export default function ProjectsPage() {
           ) : (
             <p className="text-center text-muted-foreground">Projects will appear here once added.</p>
           )}
+          </div>
         </section>
       </main>
 

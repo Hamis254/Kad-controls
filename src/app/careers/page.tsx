@@ -66,7 +66,7 @@ export default function CareersPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-secondary text-foreground">
       <Navbar />
 
       <main className="flex-1">
@@ -78,7 +78,7 @@ export default function CareersPage() {
           </p>
         </section>
 
-        <section className="max-w-7xl mx-auto px-6 py-16 sm:px-10 lg:px-12">
+        <section className="w-full px-6 py-16 sm:px-10 lg:px-12">
           {isLoading ? (
             <div className="flex justify-center py-12">
               <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary" />

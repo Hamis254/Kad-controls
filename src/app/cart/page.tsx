@@ -62,7 +62,7 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen flex flex-col bg-muted/30">
+      <div className="min-h-screen flex flex-col bg-secondary">
         <Navbar />
         <div className="flex-1 flex items-center justify-center">
           <div className="text-center">
@@ -79,10 +79,10 @@ export default function CartPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-muted/30">
+    <div className="min-h-screen flex flex-col bg-secondary">
       <Navbar />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
+      <div className="mx-auto w-full max-w-[1600px] px-4 py-12 sm:px-6 lg:px-8 flex-1">
         <h1 className="text-4xl font-bold mb-2">Your Quote List</h1>
         <p className="text-muted-foreground mb-8">
           No prices are shown on this site — add the products you need below, then request a quotation

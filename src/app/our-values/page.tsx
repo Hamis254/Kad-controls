@@ -34,7 +34,7 @@ const values = [
 
 export default function OurValuesPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-secondary text-foreground">
       <Navbar />
 
       <main className="flex-1">
@@ -43,7 +43,8 @@ export default function OurValuesPage() {
           <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight">Our Corporate Values</h1>
         </section>
 
-        <section className="max-w-4xl mx-auto px-6 py-16 sm:px-10 lg:px-12 space-y-10">
+        <section className="w-full px-6 py-16 sm:px-10 lg:px-12">
+          <div className="mx-auto w-full max-w-[1600px] space-y-10">
           {values.map((value) => (
             <div key={value.title} className="border-l-4 border-accent pl-6">
               <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
@@ -53,6 +54,7 @@ export default function OurValuesPage() {
           <p className="text-center text-muted-foreground pt-6">
             Our company leaders, management and employees make these values visible every day.
           </p>
+          </div>
         </section>
       </main>
 

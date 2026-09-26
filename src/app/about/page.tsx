@@ -31,7 +31,7 @@ const services = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-secondary text-foreground">
       <Navbar />
 
       <main className="flex-1">
@@ -48,7 +48,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="border-b border-border">
+        <section className="border-b border-border bg-background">
           <div className="max-w-5xl mx-auto px-6 py-8 sm:px-10 lg:px-12 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
             {[
               ['16+', 'Years in business'],
@@ -64,7 +64,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="max-w-5xl mx-auto px-6 py-16 sm:px-10 lg:px-12 space-y-4 text-foreground/80 leading-relaxed">
+        <section className="w-full px-6 py-16 sm:px-10 lg:px-12 space-y-4 text-foreground/80 leading-relaxed">
           <p>
             Kad Controls has grown into a leader in the electrical construction and maintenance field,
             built on the idea that a single-source turnkey electrical partner is the most cost-effective
@@ -83,7 +83,7 @@ export default function AboutPage() {
           </blockquote>
         </section>
 
-        <section className="bg-secondary px-6 py-16 sm:px-10 lg:px-12">
+        <section className="bg-background px-6 py-16 sm:px-10 lg:px-12">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-semibold text-center mb-10">Why choose us</h2>
             <div className="grid gap-8 sm:grid-cols-3 lg:grid-cols-5">
@@ -97,7 +97,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="max-w-5xl mx-auto px-6 py-16 sm:px-10 lg:px-12">
+        <section className="w-full px-6 py-16 sm:px-10 lg:px-12">
+          <div className="mx-auto w-full max-w-[1600px]">
           <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
             <Wrench className="h-6 w-6 text-primary" /> Our Services
           </h2>
@@ -108,6 +109,7 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
+          </div>
         </section>
 
         <section className="bg-accent px-6 py-16 text-center sm:px-10">

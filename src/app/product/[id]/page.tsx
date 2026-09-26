@@ -62,7 +62,7 @@ export default function ProductDetail() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex flex-col bg-muted/30">
+      <div className="min-h-screen flex flex-col bg-secondary">
         <Navbar />
         <div className="flex-1 flex items-center justify-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
@@ -74,7 +74,7 @@ export default function ProductDetail() {
 
   if (notFound || !product) {
     return (
-      <div className="min-h-screen flex flex-col bg-muted/30">
+      <div className="min-h-screen flex flex-col bg-secondary">
         <Navbar />
         <div className="flex-1 flex items-center justify-center flex-col gap-4">
           <h1 className="text-2xl font-bold">Product not found</h1>
@@ -86,7 +86,7 @@ export default function ProductDetail() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-muted/30">
+    <div className="min-h-screen flex flex-col bg-secondary">
       <Navbar />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">

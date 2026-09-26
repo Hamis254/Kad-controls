@@ -2,7 +2,15 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
+
+function XIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -49,7 +57,7 @@ export default function Footer() {
               <li><a href="https://www.facebook.com/KAD-Controls-Limited-348235419330444" aria-label="Facebook" className="inline-flex items-center gap-2 hover:text-accent"><FaFacebook aria-hidden="true" size={16} />Facebook</a></li>
               <li><a href="https://www.linkedin.com/in/kad-controls-limited-33bb00112/" aria-label="LinkedIn" className="inline-flex items-center gap-2 hover:text-accent"><FaLinkedin aria-hidden="true" size={16} />LinkedIn</a></li>
               <li><a href="https://www.instagram.com/KADcontrols" aria-label="Instagram" className="inline-flex items-center gap-2 hover:text-accent"><FaInstagram aria-hidden="true" size={16} />Instagram</a></li>
-              <li><a href="https://www.twitter.com/ControlsKad" aria-label="Twitter" className="inline-flex items-center gap-2 hover:text-accent"><FaTwitter aria-hidden="true" size={16} />Twitter</a></li>
+              <li><a href="https://www.twitter.com/ControlsKad" aria-label="X" className="inline-flex items-center gap-2 hover:text-accent"><XIcon aria-hidden="true" width={16} height={16} />X</a></li>
             </ul>
           </div>
         </div>
