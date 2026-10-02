@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Cpu, Package, PenTool, Sun, Wrench, Zap } from "lucide-react";
+import Image from "next/image";
 import Navbar from "@/frontend/components/common/Navbar";
 import Footer from "@/frontend/components/common/Footer";
 import ProductCard from "@/frontend/components/products/ProductCard";
@@ -13,17 +13,6 @@ interface ClientItem {
   id: string;
   name: string;
   logoUrl?: string | null;
-}
-
-const categoryIcons: Record<string, typeof Sun> = {
-  solar: Sun,
-  automation: Cpu,
-  panels: Zap,
-};
-
-function iconForCategory(slug: string) {
-  const key = Object.keys(categoryIcons).find((k) => slug.includes(k));
-  return key ? categoryIcons[key] : Zap;
 }
 
 export default function Home() {
@@ -49,117 +38,120 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-secondary text-foreground">
+    <div className="min-h-screen bg-background text-foreground antialiased">
       <Navbar />
 
       <main>
-        {/* Hero */}
+        {/* Hero Section */}
         <section className="relative overflow-hidden bg-primary text-primary-foreground">
-          <div className="mx-auto grid w-full max-w-[1800px] gap-4 px-6 py-20 sm:px-10 lg:grid-cols-[1fr_1fr] lg:items-stretch lg:px-12 lg:py-28">
+          <div className="mx-auto grid w-full max-w-[1800px] gap-6 px-6 pt-6 pb-10 sm:px-10 lg:grid-cols-2 lg:items-start lg:gap-8 lg:px-12 lg:pt-8 lg:pb-14">
             <div className="relative z-10 max-w-2xl">
-              <p className="mb-6 flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-accent">
-                <Zap className="h-4 w-4" /> Turn-key solution provider
-              </p>
-              <h1 className="max-w-xl text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-                Design. Supply. Install. Commission. One team, start to finish.
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-primary-foreground/15 px-4 py-1.5 text-xs font-bold tracking-wider text-primary-foreground border border-primary-foreground/30 uppercase backdrop-blur-sm">
+                Turn-Key Electrical & Automation Solutions Provider
+              </div>
+              <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
+                Design. Supply. Install. Commission. One Team, Start to Finish.
               </h1>
-              <p className="mt-7 max-w-lg text-lg leading-8 text-primary-foreground/80">
-                Kad Controls Ltd is a turn-key solution provider — we don&apos;t just supply parts, we
-                handle the whole project: solar PV, automation panels, BMS and fire alarm systems,
-                UPS/generators and industrial lighting, designed, built and commissioned by our own team.
+              <p className="mt-4 text-base leading-relaxed text-primary-foreground/85 sm:text-lg">
+                Kad Controls Ltd is a Turn-Key Electrical & Automation Solutions Provider, we dont just Supply parts, we handle the whole project: Solar PV, Automation Panels, BMS and Fire Alarm Systems, UPS and Industrial Lighting, designed, built and commissioned by our own team.
               </p>
-              <div className="mt-9 flex flex-wrap gap-4">
-                <Link href="/what-we-do" className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-semibold text-accent-foreground transition hover:opacity-90">
-                  See what we do <ArrowRight className="h-4 w-4" />
+              <div className="mt-6 flex flex-wrap gap-4">
+                <Link 
+                  href="/what-we-do" 
+                  className="inline-flex items-center justify-center rounded-full bg-accent px-8 py-3.5 font-bold text-accent-foreground shadow-sm transition hover:bg-accent/90"
+                >
+                  Engineering Services
                 </Link>
-                <Link href="/catalogue" className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 px-6 py-3 font-semibold transition hover:border-accent hover:text-accent">
-                  Browse the catalogue
+                <Link 
+                  href="/catalogue" 
+                  className="inline-flex items-center justify-center rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-8 py-3.5 font-bold transition hover:bg-primary-foreground/20 hover:border-primary-foreground/50"
+                >
+                  Browse Catalogue
                 </Link>
               </div>
             </div>
 
-            <HeroGallery />
+            <div className="relative w-full">
+              <HeroGallery />
+            </div>
           </div>
         </section>
 
-        {/* Turn-key process */}
-        <section className="border-b border-border bg-background">
-          <div className="mx-auto grid w-full max-w-[1800px] gap-6 px-6 py-8 sm:grid-cols-4 sm:px-10 lg:px-12">
+        {/* Turn-Key Process Bar */}
+        <section className="border-b border-border bg-card shadow-xs">
+          <div className="mx-auto grid w-full max-w-[1800px] grid-cols-1 gap-6 px-6 py-10 sm:grid-cols-2 lg:grid-cols-4 sm:px-10 lg:px-12">
             {[
-              [PenTool, "1. Design", "Solution designed around your site"],
-              [Package, "2. Supply", "Panels and systems supplied"],
-              [Wrench, "3. Install", "Installed by our own technicians"],
-              [CheckCircle2, "4. Commission", "Tested, commissioned, handed over"],
-            ].map(([Icon, title, text]) => {
-              const FeatureIcon = Icon as typeof Wrench;
-              return (
-                <div key={title as string} className="flex items-center gap-4">
-                  <FeatureIcon className="h-6 w-6 text-primary shrink-0" />
-                  <div>
-                    <p className="font-semibold">{title as string}</p>
-                    <p className="text-sm text-muted-foreground">{text as string}</p>
-                  </div>
+              ["01", "Site & Load Audit", "Tailored electrical & automation design"],
+              ["02", "Component Sourcing", "Certified panels, drives & power hardware"],
+              ["03", "On-Site Assembly", "Executed by qualified automation technicians"],
+              ["04", "Testing & Handover", "Full safety audit and client training"],
+            ].map(([step, title, text]) => (
+              <div key={title} className="flex items-start gap-4 p-2">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 font-mono text-sm font-bold text-primary">
+                  {step}
                 </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* Categories */}
-        <section id="categories" className="w-full px-6 py-20 sm:px-10 lg:px-12">
-          <div className="mb-10 flex items-end justify-between gap-6">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Product range</p>
-              <h2 className="mt-2 text-4xl font-semibold tracking-tight">Shop by category</h2>
-            </div>
-            <Link href="/catalogue" className="hidden items-center gap-2 font-semibold sm:flex">
-              View all <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          {categories.length > 0 ? (
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {categories.map((cat) => {
-                const Icon = iconForCategory(cat.slug);
-                return (
-                  <details
-                    key={cat.id}
-                    className="group border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-primary"
-                  >
-                    <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                      <Icon className="h-8 w-8 text-primary transition group-hover:text-accent" />
-                      <h3 className="mt-12 text-xl font-semibold">{cat.name}</h3>
-                    </summary>
-                    <div className="pt-2">
-                      <p className="text-sm text-muted-foreground">{cat.description}</p>
-                      <Link
-                        href={`/catalogue?categoryId=${cat.id}`}
-                        className="mt-6 inline-flex items-center gap-2 font-semibold hover:text-primary"
-                      >
-                        Browse category <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </div>
-                  </details>
-                );
-              })}
-            </div>
-          ) : (
-            <p className="text-muted-foreground">Categories will appear here once added.</p>
-          )}
-        </section>
-
-        {/* Featured products */}
-        <section className="w-full bg-secondary px-6 py-20 sm:px-10 lg:px-12">
-          <div className="mx-auto w-full max-w-[1800px]">
-            <div className="mb-10 flex items-end justify-between gap-6">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">In stock now</p>
-                <h2 className="mt-2 text-4xl font-semibold tracking-tight">Featured products</h2>
+                <div>
+                  <p className="font-bold text-foreground">{title}</p>
+                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{text}</p>
+                </div>
               </div>
-              <Link href="/catalogue" className="hidden items-center gap-2 font-semibold sm:flex">
-                Browse everything <ArrowRight className="h-4 w-4" />
+            ))}
+          </div>
+        </section>
+
+        {/* Categories Section */}
+        <section id="categories" className="w-full px-6 py-8 sm:px-10 lg:px-12 lg:py-10">
+          <div className="mx-auto max-w-[1800px]">
+            <div className="mb-5 flex flex-col justify-between gap-2 sm:flex-row sm:items-end sm:gap-4">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-primary">Capabilities & Equipment</p>
+                <h2 className="mt-0.5 text-3xl font-extrabold tracking-tight sm:text-4xl">System Categories</h2>
+              </div>
+              <Link href="/catalogue" className="text-sm font-bold text-primary hover:underline hover:underline-offset-4">
+                View All Categories &rarr;
               </Link>
             </div>
+
+            {categories.length > 0 ? (
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {categories.map((cat) => (
+                  <Link
+                    key={cat.id}
+                    href={`/catalogue?categoryId=${cat.id}`}
+                    className="group flex flex-col justify-between rounded-xl border border-border bg-card p-6 shadow-xs transition hover:-translate-y-1 hover:border-primary hover:shadow-md"
+                  >
+                    <div>
+                      <h3 className="text-xl font-bold tracking-tight text-foreground">{cat.name}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                        {cat.description || "Explore specialized solutions and technical components in this category."}
+                      </p>
+                    </div>
+                    <div className="mt-4 text-sm font-bold text-primary">
+                      Explore Category &rarr;
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div className="rounded-xl border border-dashed border-border p-6 text-center text-muted-foreground">
+                <p>Loading active product categories...</p>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Featured Products */}
+        <section className="w-full border-t border-border bg-muted/40 px-6 py-8 sm:px-10 lg:px-12 lg:py-10">
+          <div className="mx-auto w-full max-w-[1800px]">
+            <div className="mb-5 flex flex-col justify-between gap-2 sm:flex-row sm:items-end sm:gap-4">
+              <div>
+                <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Featured Industrial Products</h2>
+              </div>
+              <Link href="/catalogue" className="text-sm font-bold text-primary hover:underline hover:underline-offset-4">
+                Explore Full Inventory &rarr;
+              </Link>
+            </div>
+
             {featuredProducts.length > 0 ? (
               <div className="grid gap-6 md:grid-cols-3">
                 {featuredProducts.map((product) => (
@@ -167,39 +159,65 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <p className="text-muted-foreground">Products will appear here once added to the catalogue.</p>
+              <div className="rounded-xl border border-dashed border-border p-6 text-center text-muted-foreground">
+                <p>No featured products available at this time.</p>
+              </div>
             )}
           </div>
         </section>
 
-        <section className="bg-accent px-6 py-16 text-center sm:px-10">
-          <h2 className="text-4xl font-semibold tracking-tight text-accent-foreground">Need a system designed for your site?</h2>
-          <p className="mx-auto mt-4 max-w-md text-accent-foreground/80">Send us your requirements and our technical team will help you spec the right panel or solar system.</p>
-          <Link href="/catalogue" className="mt-7 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:opacity-90">
-            Browse the catalogue <ArrowRight className="h-4 w-4" />
-          </Link>
+        {/* Engineering Inquiry Banner */}
+        <section className="bg-accent px-6 py-16 text-accent-foreground sm:px-10 lg:px-12">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Require a Custom Control Panel or Solar Spec?
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-accent-foreground/80">
+              Our engineers assist with single-line diagrams, load estimation, and panel fabrication specs tailored to your factory or commercial installation.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <Link 
+                href="/contact" 
+                className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3.5 font-bold text-primary-foreground shadow-sm transition hover:bg-primary/90"
+              >
+                Request Technical Quote &rarr;
+              </Link>
+            </div>
+          </div>
         </section>
 
-        {/* Clients */}
+        {/* Trusted Clients */}
         {clients.length > 0 && (
-          <section className="border-b border-border px-6 py-12 sm:px-10 lg:px-12">
-            <p className="text-center text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-8">
-              Trusted by
-            </p>
-            <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-6">
-              {clients.map((client) => (
-                <div key={client.id} className="flex h-20 shrink-0 items-center justify-center sm:h-24">
-                  {client.logoUrl ? (
-                    <img src={client.logoUrl} alt={client.name} className="max-h-20 w-auto max-w-full object-contain opacity-100 transition sm:max-h-24" />
-                  ) : (
-                    <span className="text-center text-lg font-semibold text-muted-foreground">{client.name}</span>
-                  )}
-                </div>
-              ))}
+          <section className="border-t border-border bg-background px-6 pt-8 pb-6 sm:px-10 lg:px-12 lg:pt-10 lg:pb-8">
+            <div className="mx-auto max-w-[1800px]">
+              <p className="mb-5 text-left text-sm font-bold uppercase tracking-widest text-muted-foreground">
+                Trusted by Industrial & Commercial Partners
+              </p>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-6 lg:grid-cols-6 xl:grid-cols-7">
+                {clients.map((client) => (
+                  <div key={client.id} className="flex h-28 items-center justify-center rounded-xl border border-border bg-card p-4 transition hover:shadow-md hover:border-primary/40 sm:h-32 lg:h-36">
+                    {client.logoUrl ? (
+                      <div className="relative h-full w-full">
+                        <Image
+                          src={client.logoUrl}
+                          alt={client.name}
+                          fill
+                          sizes="(min-width:1024px) 14vw, (min-width:640px) 30vw, 45vw"
+                          unoptimized
+                          className="object-contain"
+                        />
+                      </div>
+                    ) : (
+                      <span className="text-base font-bold text-muted-foreground text-center">{client.name}</span>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
         )}
       </main>
+
       <Footer />
     </div>
   );

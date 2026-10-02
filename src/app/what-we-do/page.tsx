@@ -158,7 +158,7 @@ export default function WhatWeDoPage() {
       <Navbar />
 
       <main className="flex-1">
-        <section className="bg-primary text-primary-foreground px-6 py-16 sm:px-10 lg:px-12 text-center">
+        <section className="bg-primary text-primary-foreground px-6 py-12 sm:px-10 lg:px-12 text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent mb-4">Our capabilities</p>
           <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight">What We Do</h1>
           <p className="mt-6 max-w-2xl mx-auto text-primary-foreground/80">
@@ -168,10 +168,10 @@ export default function WhatWeDoPage() {
         </section>
 
         {/* Turn-key process */}
-        <section className="w-full px-6 py-16 sm:px-10 lg:px-12">
+        <section className="w-full px-6 py-10 sm:px-10 lg:px-12 lg:py-12">
           <div className="mx-auto w-full max-w-[1600px]">
           <h2 className="text-2xl font-semibold text-center mb-2">Turn-key, start to finish</h2>
-          <p className="text-center text-muted-foreground mb-10 max-w-xl mx-auto">
+          <p className="text-center text-muted-foreground mb-6 max-w-xl mx-auto">
             One team handles every stage — no gaps between a designer, a supplier and an installer.
           </p>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

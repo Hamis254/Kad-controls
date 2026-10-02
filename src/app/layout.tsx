@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono, Poppins, Herr_Von_Muellerhoff } from "next/font/google";
+import { Inter, Geist_Mono, Poppins, Herr_Von_Muellerhoff, Geist } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
@@ -69,7 +71,7 @@ const localBusinessJsonLd = {
   email: "info@kadcontrols.co.ke",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Prabhaki Industrial Park, Godown C3, Babadogo",
+    streetAddress: "Prabhaki Industrial Park, Godown C3, Babadogo Road",
     addressLocality: "Nairobi",
     postalCode: "00200",
     addressCountry: "KE",
@@ -87,7 +89,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", "font-sans", inter.variable, geistMono.variable, poppins.variable, tagline.variable)}
+      className={cn("h-full", "antialiased", inter.variable, geistMono.variable, poppins.variable, tagline.variable, "font-sans", geist.variable)}
     >
       <head>
         <script

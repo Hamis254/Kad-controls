@@ -41,7 +41,7 @@ export default function HeroGallery() {
   }, []);
 
   return (
-    <div className="relative hidden h-full w-full min-h-115 lg:block">
+    <div className="relative hidden w-full aspect-[4/3] lg:block">
       <style jsx>{`
         @keyframes heroFloatMain {
           0%, 100% { transform: translateY(0px); }
@@ -52,7 +52,7 @@ export default function HeroGallery() {
         }
       `}</style>
 
-      <div className="hero-float-main relative h-full w-full overflow-hidden rounded-2xl border-4 border-white/20 shadow-2xl">
+      <div className="hero-float-main absolute inset-0 overflow-hidden rounded-2xl border-4 border-white/20 shadow-2xl">
         {SLIDES.map((slide, idx) => (
           <Image
             key={slide.src}
