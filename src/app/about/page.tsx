@@ -1,14 +1,14 @@
 import Navbar from '@/frontend/components/common/Navbar';
 import Footer from '@/frontend/components/common/Footer';
 import GetQuoteButton from '@/frontend/components/common/GetQuoteButton';
-import { ShieldCheck, Leaf, Users, Wrench, Zap } from 'lucide-react';
+import { Wrench } from 'lucide-react';
 
 const whyChooseUs = [
-  { icon: ShieldCheck, title: 'Quality is our standard' },
-  { icon: Zap, title: 'Innovative solutions' },
-  { icon: ShieldCheck, title: 'Safety is our culture' },
-  { icon: Leaf, title: 'Energy & environment consulting' },
-  { icon: Users, title: 'Committed to clients' },
+  { title: 'Quality is our standard' },
+  { title: 'Innovative solutions' },
+  { title: 'Safety is our culture' },
+  { title: 'Energy & environment consulting' },
+  { title: 'Committed to clients' },
 ];
 
 const services = [
@@ -86,10 +86,10 @@ export default function AboutPage() {
         <section className="bg-background px-6 py-16 sm:px-10 lg:px-12">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-2xl font-semibold text-center mb-10">Why choose us</h2>
-            <div className="grid gap-8 sm:grid-cols-3 lg:grid-cols-5">
-              {whyChooseUs.map(({ icon: Icon, title }) => (
-                <div key={title} className="text-center">
-                  <Icon className="h-8 w-8 text-primary mx-auto mb-3" />
+            <div className="grid gap-4 lg:gap-5 sm:grid-cols-3 lg:grid-cols-5">
+              {whyChooseUs.map(({ title }, index) => (
+                <div key={title} className="border border-border bg-secondary rounded-lg p-5 text-center">
+                  <span className="block text-2xl font-bold text-accent mb-2">{String(index + 1).padStart(2, '0')}</span>
                   <p className="text-sm font-medium">{title}</p>
                 </div>
               ))}
